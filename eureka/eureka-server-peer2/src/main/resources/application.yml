@@ -2,7 +2,7 @@ spring:
   application:
     name: eureka-server-peer2
 server:
-  port: 20000
+  port: 20002
 eureka:
   instance:
     hostname: peer2
