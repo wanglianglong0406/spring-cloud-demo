@@ -7,3 +7,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://peer1:20001/eureka/,http://peer2:20002/eureka/
+
+#针对服务配置负载均衡策略，优先级高于全局
+#eureka-client:
+  #ribbon:
+    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

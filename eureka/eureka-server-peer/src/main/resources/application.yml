@@ -9,4 +9,4 @@ eureka:
   #注册中心注册
   client:
     service-url:
-      defaultZone: http://peer2:20000/eureka
+      defaultZone: http://peer2:20002/eureka
