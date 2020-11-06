@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: fegin-client
+server:
+  port: 40002
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:20001/eureka/,http://peer2:20002/eureka/

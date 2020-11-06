@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: feign-consumer
+server:
+  port: 40001
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:20001/eureka/,http://peer2:20002/eureka/
+feign-client:
+  ribbon:
+    #每台机器最大重试次数
+    MaxAutoRetries: 2
+    #可以在重试几台机器
+    MaxAutoRetriesNextServer: 2
+    #连接超时
+    ConnectTimeout: 1000
+    #业务处理超时
+    ReadTimeout: 2000
+    #在所有HTTP Methord进行重试
+    OkToRetryOnAllOperations: true
