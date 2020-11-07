@@ -1,6 +1,6 @@
 spring:
   application:
-    name: fegin-client
+    name: feign-client
 server:
   port: 40002
 

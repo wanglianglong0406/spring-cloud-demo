@@ -1,0 +1,56 @@
+server:
+  port: 50000
+spring:
+  application:
+    name: hystrix-fullback
+  main:
+    allow-bean-definition-overriding: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:20001/eureka/,http://peer2:20002/eureka/
+
+#开启feign下面的hystrix注解功能
+feign:
+  hystrix:
+    enabled: true
+
+
+hystrix:
+  command:
+    default:
+      fallback: #是否开启服务降级
+        enabled: true
+      execution: #全局超时
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000  #超时时间
+            interruptOnTimeout: true  #超时以后终止线程
+            interruptOnFutureCancel: true #取消的时候终止线程
+
+    #指定方法
+    Myservice#retry(int):
+      execution: #全局超时
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000  #超时时间
+            interruptOnTimeout: true  #超时以后终止线程
+            interruptOnFutureCancel: true #取消的时候终止线程
+
+
+feign-client:
+  ribbon:
+    #每台机器最大重试次数
+    MaxAutoRetries: 0
+    #可以在重试几台机器
+    MaxAutoRetriesNextServer: 0
+    #连接超时
+    ConnectTimeout: 1000
+    #业务处理超时
+    ReadTimeout: 8000
+    #在所有HTTP Methord进行重试
+    OkToRetryOnAllOperations: false
+

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient("fein-client")
+@FeignClient("feign-client")
 public interface IService {
     @GetMapping("/say-hi")
     public String sayHi();
@@ -16,4 +16,7 @@ public interface IService {
 
     @GetMapping("/retry")
     public String retry(@RequestParam("timeout") int timeout);
+
+    @GetMapping("error")
+    public String error();
 }
