@@ -16,4 +16,6 @@ public class HystrixFallBackApplication {
     public static void main(String[] args) {
         new SpringApplicationBuilder(HystrixFallBackApplication.class).web(WebApplicationType.SERVLET).run(args);
     }
+
+
 }

@@ -2,31 +2,47 @@ package com.hy.hystrix;
 
 import com.hy.Friend;
 import com.hy.MyService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Slf4j
 @Component
 public class FallBack implements MyService {
+    @Override
+    @HystrixCommand(fallbackMethod = "fallback2")
+    public String error() {
+        log.info("Fallback: I'm not a black sheep any more");
+        throw new RuntimeException("first fallback");
+    }
+
+    @HystrixCommand(fallbackMethod = "fallback3")
+    public String fallback2() {
+        log.info("fallback again");
+        throw new RuntimeException("fallback again");
+    }
+
+    public String fallback3() {
+        log.info("fallback again and again");
+        return "success";
+    }
+
+
     @Override
     public String sayHi() {
         return null;
     }
 
     @Override
-    public Friend sayHiPost(Friend friend) {
+    public Friend sayHiPost(@RequestBody Friend friend) {
         return null;
     }
 
     @Override
-    public String retry(int timeout) {
-        log.info("You ar late...");
-        return "You are late...";
+    public String retry(@RequestParam(name = "timeout") int timeout) {
+        return "You are late !";
     }
 
-    @Override
-    public String error() {
-        log.info("FullBack I`m not a black sheep any more...");
-        return "FullBack I`m not a black sheep any more...";
-    }
 }

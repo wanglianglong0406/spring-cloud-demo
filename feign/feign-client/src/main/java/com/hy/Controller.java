@@ -27,7 +27,7 @@ public class Controller implements IService {
 
     @Override
     public String retry(@RequestParam("timeout") int timeout) {
-        while (timeout-- >= 0 ){
+        while (-- timeout >= 0 ){
             try {
                 Thread.sleep(1000L);
             } catch (InterruptedException e) {
