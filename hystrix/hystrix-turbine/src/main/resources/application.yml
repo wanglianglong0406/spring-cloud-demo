@@ -14,8 +14,8 @@ turbine:
   app-config: hystrix-consumer   #指定所需要监控的服务名
   cluster-name-expression: new String('default')
   combine-host-port: true  #将端口和hostname作为区分不同服务的条件（默认只使用host）
-  #instanceUrlSuffix:
-    #default: actuator/hystrix.stream
+  instanceUrlSuffix:
+    default: actuator/hystrix.stream
   aggregator:
     cluster-config: default
 

@@ -2,7 +2,7 @@ spring:
   application:
     name: hystrix-dashborad
 server:
-  port: 20002
+  port: 53000
 
 hystrix:
   dashboard:

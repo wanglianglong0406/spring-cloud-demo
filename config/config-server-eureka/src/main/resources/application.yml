@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: config-server-eureka
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/wanglianglong0406/config-repo.git
+          force-pull: true   #强制拉取配置文件
+#          search-paths:
+#          username: wanglianglong
+#          password: yunyu1qaz2wsx
+server:
+  port: 60001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka/
